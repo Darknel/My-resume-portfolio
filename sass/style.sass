@@ -1,0 +1,354 @@
+
+// mixin's for adaptive page (media queries)
+@mixin for-phone
+    @media (min-width: 320px)  
+        @content 
+@mixin for-big-phone
+    @media (min-width: 480px)  
+        @content 
+@mixin for-tablet-portrait
+    @media (min-width: 768px)  
+        @content 
+@mixin for-tablet-landscape
+    @media (min-width: 992px)  
+        @content 
+@mixin for-desktop
+    @media (min-width: 1200px)  
+        @content
+@mixin for-big-desktop
+    @media (min-width: 1800px) 
+        @content
+/* general styles */
+*
+    box-sizing: border-box
+.container 
+    background-color: #eaeaea
+    display: flex
+    margin: auto
+    @include for-phone
+        max-width: 90%
+        flex-direction: column
+        justify-content: center
+        box-shadow: 0px 0px 10px 0 #39383a
+    @include for-tablet-portrait
+        max-width: 90%
+    @include for-tablet-landscape
+        flex-direction: row
+        justify-content: space-between
+        max-width: 960px
+/* For a time */
+.visible-caption
+    font-family: "Open Sans",sans-serif
+    font-size: 22px
+    font-weight: 600
+    color: #39383a
+    text-transform: uppercase
+    text-align: center
+    background-color: tomato
+    padding: 20px 0
+// Sidebar
+.sidebar
+    flex-basis: 38%
+    max-width: 350px
+    background-color: #39383a
+    padding: 20px
+    @include for-phone
+        max-width: 100%
+        margin-right: 0
+        padding: 20px
+    @include for-big-phone
+        max-width: 100%
+        margin-right: 0
+        padding: 20px 50px
+    @include for-tablet-portrait
+        max-width: 100%
+        padding: 20px 100px
+    @include for-tablet-landscape
+        flex-basis: 38%
+        max-width: 350px
+        padding: 20px
+    &__photo
+        position: relative
+        width: 100%
+        display: flex
+        justify-content: center
+        & img 
+            width: 250px
+            height: 250px
+            border: 2px solid #fff
+            border-radius: 50%
+    &__info
+        &-caption
+            margin: 20px 0 20px 0
+            padding-bottom: 16px
+            color: #ffffff
+            font-family: "Open Sans", sans-serif
+            font-size: 16px
+            font-weight: 700
+            text-transform: uppercase
+            border-bottom: 2px #5a5a5a dashed
+        &-text
+            margin-bottom: 35px
+            color: #ababab
+            font-family: Roboto, sans-serif
+            font-size: 13px
+            font-weight: 300
+            letter-spacing: 0.5px
+            line-height: 24.19px   
+    // Sidebar-info block ( sidbar-info__contacts )
+.contacts
+    &__item
+        position: relative
+        padding-left: 30px
+        padding-bottom: 25px
+        border-bottom: 2px #5a5a5a dashed
+    &__title    
+        margin: 25px 0 5px 0
+        color: #ffffff
+        font-family: 'Open Sans', sans-serif
+        font-size: 16px
+        font-weight: 600
+        letter-spacing: 0.63px
+        position: relative
+        &:before 
+            content: ''  
+            position: absolute
+            left: -30px
+            top: 1px
+            background-size: cover
+            height: 16px
+            width: 16px
+        &-phone:before
+            background-image: url('../img/phone.svg')
+        &-email:before
+            background-image: url('../img/mail.svg')
+        &-web:before
+            background-image: url('../img/global.svg')
+        &-telegram:before
+            background-image: url('../img/telegram.svg')
+        &-skype:before
+            background-image: url('../img/skype.svg')
+        &-github:before
+            background-image: url('../img/github.svg')
+    &__link a
+        color: #ababab
+        text-decoration: none
+        font-family: 'Open Sans', sans-serif
+        font-size: 13px
+        font-weight: 300
+        letter-spacing: 0.5px
+        &:hover
+            color: darken(#ababab, 20%)
+// Content
+.content
+    background-color: #FFFAFA
+    box-shadow: 5px -5px 10px 0 #39383a
+    @include for-phone
+        width: 100%
+        box-shadow: none
+        padding: 20px
+    @include for-big-phone
+        box-shadow: none
+        padding: 20px 50px
+    @include for-tablet-portrait
+        max-width: 100%
+        padding: 20px 100px
+    @include for-tablet-landscape
+        max-width: 100%
+        padding: 20px
+        flex-basis: 62%
+        max-width: 590px
+    &-title
+        position: relative
+        color: #39383a
+        font-family: 'Open Sans', sans-serif
+        font-size: 16px
+        font-weight: 600
+        text-transform: uppercase
+        letter-spacing: 1.04px
+        border-bottom: 1px solid #e0e0e0
+        padding-bottom: 25px
+        margin: 0
+    &-container
+        border: 1px solid #ccc
+        @include for-phone
+            padding: 20px
+        @include for-tablet-landscape
+            padding: 20px 50px
+    &-head
+        width: 100%
+        display: flex
+        flex-direction: column
+        align-content: center
+        justify-content: center
+        position: relative
+        border-bottom: 1px solid #e0e0e0
+        padding-bottom: 30px
+        &__title
+            color: #39383a
+            font-family: 'Roboto', sans-serif
+            font-size: 16px
+            font-weight: 700
+            text-transform: uppercase
+            letter-spacing: 5px
+            text-align: center
+        &__descr
+            color: #808080
+            font-family: 'Open Sans', sans-serif
+            font-size: 10px
+            font-weight: 400
+            text-transform: uppercase
+            letter-spacing: 1.72px
+            text-align: center
+    &-body
+        margin: 50px 0
+    &-list
+        font-family: 'Roboto', sans-serif
+        padding: 0
+        margin: 0
+        &__item
+            list-style-type: none
+            position: relative
+            padding: 0 0 30px 40px
+            margin-top: 35px
+            border-bottom: 1px dashed #e0e0e0
+            @include for-phone
+                padding: 0 0 30px 20px
+            &:last-child  
+                border: none
+                padding-bottom: 0
+                margin-bottom: 50px
+            &:before
+                content: ''
+                width: 9px
+                height: 9px
+                background-color: #000
+                border-radius: 50%
+                position: absolute
+                left: 0px
+                top: 5px  
+        &__title
+            color: #39383a
+            font-family: 'Open-sans', sans-serif
+            font-size: 14px
+            font-weight: 600
+            text-transform: uppercase
+            letter-spacing: 0.73px
+            margin-bottom: 0px
+        &__data
+            color: #39383a
+            font-family: 'Roboto', sans-serif
+            font-size: 12px
+            font-weight: 600
+            text-transform: uppercase
+            letter-spacing: 0.68px
+        &__text
+            color: #777777
+            font-family: 'Roboto', sans-serif
+            font-size: 14px
+            font-weight: 400
+            letter-spacing: 0.38px
+    &-skills
+        margin: 50px 0
+        height: 150px
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        padding-right: 50px
+        @include for-phone
+            padding-right: 0
+        &__item
+            display: flex
+            align-items: center
+            justify-content: space-between
+        &__text
+            color: #39383a
+            font-family: "Open Sans",sans-serif
+            font-size: 12px
+            font-weight: 600
+            text-transform: uppercase
+            letter-spacing: 0.73px
+        &__level
+            display: block
+            height: 8px
+            width: 267px
+            border: 1px solid #39383a
+            position: relative
+            @include for-phone
+                width: 120px
+            @include for-tablet-portrait
+                width: 267px
+            &:after
+                content: ''
+                height: 100%
+                position: absolute
+                top: 0
+                left: 0
+                background-color: #898989
+        .level-1:after
+            width: 80%
+        .level-2:after
+            width: 75%
+        .level-3:after
+            width: 75%
+        .level-4:after
+            width: 85%
+        .level-5:after
+            width: 65%
+        .level-6:after
+            width: 65%
+        .level-7:after
+            width: 25%
+        .level-8:after
+            width: 35%
+        &__color
+            display: block
+            height: 100%
+    &-portfolio
+        display: flex
+        @include for-phone
+            flex-flow: column wrap
+            justify-content: center
+            align-items: center
+        @include for-tablet-portrait
+            flex-flow: row wrap
+            justify-content: space-between
+            align-content: space-between
+        &__item
+            margin-top: 10px
+            max-width: 220px
+            height: 350px
+            background-repeat: no-repeat
+            background-size: cover
+            background-position: center 0
+            position: relative
+            box-shadow: 0px 0px 10px #ccc
+            @include for-phone
+                width: 100%
+            @include for-tablet-portrait
+                width: 50%
+            &:hover
+                cursor: pointer
+                box-shadow: 0px 0px 15px #000
+            & a
+                position: absolute
+                left: 0
+                top: 0
+                width: 100%
+                height: 100%
+        .creatives
+            background-image: url(../img/Creatives.png)
+        .ipad
+            background-image: url(../img/Ipad-development.png)
+        .nords
+            background-image: url(../img/Nords.png)
+        .sport
+            background-image: url(../img/Sportshold.jpg)
+.footer
+    width: 100%
+    height: 100px
+    background-color: #39383a
+    display: flex
+    justify-content: center
+    align-items: center
+    margin-top: 20px
